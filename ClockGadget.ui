@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>ClockGadgetClass</class>
+ <widget class="QWidget" name="ClockGadgetClass">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>321</width>
+    <height>181</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>ClockGadget</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">background-color: rgba(255, 255, 255, 0);</string>
+  </property>
+  <widget class="Viewport" name="graphicsView">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>321</width>
+     <height>181</height>
+    </rect>
+   </property>
+   <property name="frameShape">
+    <enum>QFrame::NoFrame</enum>
+   </property>
+   <property name="frameShadow">
+    <enum>QFrame::Plain</enum>
+   </property>
+   <property name="lineWidth">
+    <number>0</number>
+   </property>
+  </widget>
+ </widget>
+ <layoutdefault spacing="6" margin="11"/>
+ <customwidgets>
+  <customwidget>
+   <class>Viewport</class>
+   <extends>QGraphicsView</extends>
+   <header>viewport.h</header>
+  </customwidget>
+ </customwidgets>
+ <resources>
+  <include location="ClockGadget.qrc"/>
+ </resources>
+ <connections/>
+</ui>
