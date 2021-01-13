@@ -9,7 +9,7 @@ AnalogClockItem::~AnalogClockItem()
 
 void AnalogClockItem::advance(int phase)
 {
-	if (phase = 1)
+	if (phase)
 	{
 		auto time = QDateTime::currentDateTime().time();
 

@@ -8,7 +8,7 @@ DigitalClockItem::~DigitalClockItem()
 
 void DigitalClockItem::advance(int phase)
 {
-	if (phase = 1)
+	if (phase)
 	{
 		clockText = QTime::currentTime().toString("hh:mm:ss");
 		update();
