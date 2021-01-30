@@ -35,8 +35,8 @@ ClockGadget::ClockGadget(QWidget* parent) : QWidget(parent)
 	animationTimer = new QTimer(this);
 	animationTimer->start(1000 / AinmationFps);
 
-	connect(view, SIGNAL(mousePositionSignal(QPoint)), this, SLOT(moveWidgetSlot(QPoint)));
-	connect(animationTimer, SIGNAL(timeout()), scene, SLOT(advance()));
+	connect(view, &Viewport::mousePositionSignal, this, &ClockGadget::moveWidgetSlot);
+	connect(animationTimer, &QTimer::timeout, scene, &QGraphicsScene::advance);
 
 	digitalClock.setSize(this->size());
 	analogClock.setSize(this->size());
@@ -65,12 +65,12 @@ ClockGadget::ClockGadget(QWidget* parent) : QWidget(parent)
 	analogClockAction = menu->addAction("Analog");
 	colorAction = menu->addAction("Color");
 	exitAction = menu->addAction("Exit");
-	connect(digitalClockAction, SIGNAL(triggered()), this, SLOT(digitalClockSettingsSlot()));
-	connect(analogClockAction, SIGNAL(triggered()), this, SLOT(analogClockSettingsSlot()));
-	connect(colorAction, SIGNAL(triggered()), this, SLOT(colorSettingsSlot()));
-	connect(exitAction, SIGNAL(triggered()), qApp, SLOT(quit()));
-	connect(this, SIGNAL(setColorSignal(QColor)), &digitalClock, SLOT(setColorSlot(QColor)));
-	connect(this, SIGNAL(setColorSignal(QColor)), &analogClock, SLOT(setColorSlot(QColor)));
+	connect(digitalClockAction, &QAction::triggered, this, &ClockGadget::digitalClockSettingsSlot);
+	connect(analogClockAction, &QAction::triggered, this, &ClockGadget::analogClockSettingsSlot);
+	connect(colorAction, &QAction::triggered, this, &ClockGadget::colorSettingsSlot);
+	connect(exitAction, &QAction::triggered, qApp, &QApplication::quit);
+	connect(this, &ClockGadget::setColorSignal, &digitalClock, &DigitalClockItem::setColorSlot);
+	connect(this, &ClockGadget::setColorSignal, &analogClock, &AnalogClockItem::setColorSlot);
 
 	if (!widgetSettings.contains("Color"))
 	{
